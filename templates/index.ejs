@@ -1,0 +1,39 @@
+<!-- DO NOT MODIFY THIS FILE -->
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Leaderboard</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script>
+        fetch('https://api.ipstack.com/check?access_key=95c1a4e49cb36c35c2bb096179bc6d58')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-display').innerText = `Your IP: ${data.ip}`;
+            })
+            .catch(error => {
+                console.error('Error fetching IP:', error);
+                document.getElementById('ip-display').innerText = 'Unable to fetch IP address.';
+            });
+    </script>
+</head>
+
+<body>
+	<h1>Welcome to the Leaderboard</h1>
+
+    <p id="ip-display">Fetching your IP...</p>
+
+    <h1>Leaderboard</h1>
+	<%- table %>
+	<hr>
+
+	<h2>Score Upload</h2>
+	<ul>
+		<li>To upload a score select <a href="/score">Score</a></li>
+        <li><a href="/">HOME</a></li>
+	</ul>
+	<hr>
+</body>
+
+</html>
